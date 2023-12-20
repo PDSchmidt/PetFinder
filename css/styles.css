@@ -1,0 +1,26 @@
+/* Not much here, mostly used default stuff from Bootswatch */
+#dogphoto
+{
+    max-width: 50%;
+    max-height: 400px;
+    min-height: 400px;
+}
+#dogrecphoto
+{
+    max-width: 100%;
+    max-height: 100%;
+}
+#map
+{
+    height: 600px;
+    width:  700px;
+}
+#businessCard
+{
+    min-height: 100%;
+    max-height: 100%;
+}
+#businessInfoList li
+{
+    min-height: 100px;
+}

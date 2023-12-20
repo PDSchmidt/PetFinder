@@ -1,0 +1,199 @@
+<!-- Paul Schmidt -->
+<!-- TCSS 460     -->
+<!-- Excercise 3  -->
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <title>Exercise 3</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootswatch! -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/flatly/bootstrap.min.css">
+    <!-- Stylesheet with some small alterations -->
+    <link rel="stylesheet" href="css/styles.css">  
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>   
+    <!-- GoogleMaps api with the Places library -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBddz5EchHxoPdqlZ_FGKMjjDch7fcOpW4&libraries=places"></script>
+    <!-- Bootstrap funcitons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- Custom script for the page -->
+    <script src="js/script.js"></script>
+    
+    
+</head>
+<body>
+    <!-- NavBar with a link to my GitHub -->
+    <div class="">
+      <header class="">
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="https://github.com/PDSchmidt">GitHub</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+          </nav>
+        
+      </header>
+
+      <main class="mdl-layout__content">
+        <!-- List of Tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <a class="nav-link active" data-bs-toggle="tab" href="#advice" aria-selected="true" role="tab">Famous Dog Advice</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" href="#findafriend" aria-selected="false" tabindex="-1" role="tab">Find-a-Friend</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a class="nav-link" data-bs-toggle="tab" href="#adoptioncenters" aria-selected="false" tabindex="-2" role="tab">Adoption Centers</a>
+            </li>
+          </ul>
+          
+          <div id="myTabContent" class="tab-content">
+            <!-- First Tab "Famous Dog Advice" Using two APIs, generate a random dog photo with a random piece of advice and a random dog name drawn from a Seattle database-->
+            <div class="tab-pane fade show active container" id="advice" role="tabpanel">
+              <div class="mt-3 align-items-center justify-items-center text-center">
+                <img src="" class="#dogphoto" id="dogphoto">
+                <figure class="text-center" id="quote">
+                  <blockquote class="blockquote">
+                    <p id="adviceTag" class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                  </blockquote>
+                  <figcaption class="blockquote-footer">
+                    <span  id="adviceGiver">Someone Famous</span>
+                    <cite title="Source Title"> Seattle Dog</cite>
+                  </figcaption>
+                </figure>
+                <div class="col">
+                  <div class="d-grid gap-2">
+                    <button id="newpupbutton" class="btn btn-lg btn-primary" type="button">New Pup</button>
+                    <button id="newQuoteButton" class="btn btn-lg btn-primary" type="button">New Quote</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Second Tab "Find-a-Friend" Using an API with information about dog breeds, use slider values to get recommended dog breeds for you-->
+            <div class="tab-pane fade" id="findafriend" role="tabpanel">
+              <div class="align-items-center justify-items-center text-center container">
+                <div class="row mt-3">
+                  <div class="col-6">
+                    <div class="card border-primary mb-3">
+                      <div class="card-header">Pet Attributes</div>
+                      <div class="card-body">
+                        <form>
+                          <fieldset class="form-group">
+                            <legend>Scale (1 to 5)</legend>
+                              <label for="customRange1" class="form-label">Shedding</label>
+                              <input type="range" class="form-range" id="shedding" min="1" max="5" step="1">
+                              <label for="customRange1" class="form-label">Barking</label>
+                              <input type="range" class="form-range" id="barking" min="1" max="5" step="1">
+                              <label for="customRange1" class="form-label">Energy</label>
+                              <input type="range" class="form-range" id="energy" min="1" max="5" step="1">
+                              <label for="customRange1" class="form-label">Protectiveness</label>
+                              <input type="range" class="form-range" id="protectiveness" min="1" max="5" step="1">
+                              <label for="customRange1" class="form-label">Trainability</label>
+                              <input type="range" class="form-range" id="trainability" min="1" max="5" step="1">
+                          </fieldset>
+                          <button type="submit" class="btn btn-primary mt-3 mb-3" id="updateRec">Discover Pets!</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <div class="card text-white bg-primary mb-3" >
+                      <div class="card-header">Candidate Report Card</div>
+                      <div class="card-body">
+                        <h4 class="card-title" id="breed">Primary card title</h4>
+                        <img src="img/default.jpg" class="#dogrecphoto" id="dogrecphoto">
+                        <div class="row ps-3">
+                          <ul class="col-6 list-group mt-2">
+                              <li class="list-group-item"><h5>Physical</h5>
+                                Life Expectancy: <span id="life"></span>
+                                <br>Weight: <span id="weight"></span>
+                                <br>Height: <span id="height"></span>
+                                <br><br>
+                              </li>
+                              <li class="list-group-item"><h5>Hygiene</h5>
+                                Coat Length: <span id="coat"></span>
+                                <br>Shedding: <span id="shedding2"></span>
+                                <br>Drooling: <span id="drooling"></span>
+                              </li>
+                          </ul>
+                          <ul class="col-6 list-group mt-2 ">
+                            <li class="list-group-item"><h5>Personality</h5>
+                              Energy: <span id="energy2"></span>
+                              <br>Barking: <span id="barking2"></span>
+                              <br>Playfullness: <span id="playfulness"></span>
+                              <br>Protectiveness: <span id="protectiveness2"></span>
+                            </li>
+                            <li class="list-group-item"><h5>Social</h5>
+                              Children: <span id="children"></span>
+                              <br>Other Dogs: <span id="otherDogs"></span>
+                              <br>Strangers: <span id="strangers"></span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="row mt-2">
+                          <div class="col-6">
+                            <button type="button" class="btn btn-secondary" id="prevButton" disabled>Previous</button>
+                          </div>
+                          <div class="col-6">
+                            <button type="button" class="btn btn-secondary" id="nextButton" disabled>Next</button>
+                          </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <!-- Third Tab Adoption Centers Using GoogleMaps API and a couple of their libraries, find pet adoption centers based on a user-inputed zipcode -->
+            <div class="tab-pane fade" id="adoptioncenters" role="tabpanel">
+              <div class="mt-3 align-items-center justify-items-center text-center container">
+                <div class="row mt-3">
+                  <div class="col-8">
+                    <div class="mdl-cell mdl-cell--10-col">
+                      <div id="map">map here</div>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <div class="card text-white bg-primary mb-3" id="businessCard">
+                      <div class="card-header">Business Information</div>
+                      <div class="card-body">
+                        <h4 class="card-title" id="businessName">Primary card title</h4>
+                        <ul class="list-group mt-2" id="businessInfoList">
+                          <li class="list-group-item"><h5>Address</h5>
+                            <span id="businessAddress"></span>
+                            <br>
+                          </li>
+                          <li class="list-group-item"><h5>Phone</h5>
+                            <span id="businessPhone"></span>
+                            <br>
+                          </li>
+                          <li class="list-group-item"><h5>Website</h5>
+                            <span id="businessURL"></span>
+                            <br>
+                          </li>
+                      </ul>
+                      <div class="card text-primary bg-secondary mt-2">
+                        <div class="card-body">
+                          <div class="form-group">
+                            <label class="col-form-label" for="zipInput">Zip-Code</label>
+                            <input type="text" class="form-control" placeholder="Enter a Zip code..." id="zipInput" pattern="[0-9][0-9][0-9][0-9][0-9]">
+                            <button type="button" class="btn btn-primary mt-2" id="changeZip">Change Zip</button>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </main>
+    </div>
+</body>
+</html>
