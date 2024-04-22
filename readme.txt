@@ -35,3 +35,6 @@ APIs:
     TURNING ZIP INTO "geocode" TO ACCESS THE LOCATION: 'https://maps.googleapis.com/maps/api/geocode/json?address='+ $('#zipInput').val() + '&key=AIzaSyBddz5EchHxoPdqlZ_FGKMjjDch7fcOpW4';
     SEARCH: new google.maps.places.PlacesService(map).textSearch(request, function(results, status){...});
     DETAILED INFO ABOUT A RESULT: new google.maps.places.PlacesService(map).getDetails(theResult, function(info, status) {...});
+
+Scrrenshots
+![Alt text](Screenshots/main.PNG?raw=true)
