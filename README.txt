@@ -36,5 +36,5 @@ APIs:
     SEARCH: new google.maps.places.PlacesService(map).textSearch(request, function(results, status){...});
     DETAILED INFO ABOUT A RESULT: new google.maps.places.PlacesService(map).getDetails(theResult, function(info, status) {...});
 
-Scrrenshots
-![Alt text](Screenshots/main.PNG?raw=true)
+Screnshots
+![Alt text](Screenshots/main.PNG?raw=true "Main")
